@@ -18,9 +18,9 @@ function animalGiphy(){
     		var pictureDiv = $('<div>');
     		var p = $('<p>').text("Rating: " + results[i].rating);
     		var pictureImage = 	$('<img>');
-    		pictureImage.attr("src", results[i].images.url);
+    		var pictureStill = pictureImage.attr("src", results[i].images.fixed_height_still.url);
     		pictureDiv.append(p);
-    		pictureDiv.append(pictureImage);
+    		pictureDiv.prepend(pictureStill);
     		$('#pictures-here').prepend(pictureDiv);	
     	}
 
@@ -41,7 +41,7 @@ function buttonCreator(){
 		buttonButton.attr("data-name", animals[i]);
 		//To show button names
 		buttonButton.text(animals[i]);
-		$('#generated-buttons').prepend(buttonButton, " ");
+		$('#generated-buttons').append(buttonButton, " ");
 	};
 
 };
