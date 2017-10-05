@@ -10,8 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!-- Jquery CDN -->
 	<script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
-	<!-- Javascript link -->
-	<script type="text/javascript" src="javascript/game.js" ></script>
+
 
 </head>
 <body>
@@ -19,26 +18,33 @@
 		<div class="row">
 			<div class="panel panel-default">
 			  <div class="panel-heading">
+			  	<!--user inputs stored here-->
+			    <div id="giphy-dump"></div>
 			    <form id="gihpy-form">
 			    	<center>
 			    		<!-- This will add in new buttons that the user types in-->
-				    	<label for="user-input">Magical Animal-Giphy-Fier Button</label><br>
+				    	<label for="user-input">Magical Animal-Giphy-Fier Button</label>
+				    	<br>
+				    	<br>
 				    	<p>Type in an animal species to magically generate into Giphy-Tastic Button</p>
+				    	<br>
 				    	<input type="text" id="user-input">
 				    	<br>
-				    	<button id="generate" type="submit" value="GENERATE!">Generate!</button>
+				    	<br>
+				    	<input id="generate" type="submit" value="GENERATE!">
 			    	</center>
 			    </form>
-			    <!--user inputs stored here-->
-			    <div id="giphy-dump"></div>
 			  </div>
 			  <div class="panel-body">
 			  	<!-- Buttons will generate here -->
-			    <div id="generated-buttons">Hello</div>
+			    <div id="generated-buttons"></div>
+			    <!-- Giphys will show here -->
 			    <div id="pictures-here"></div>
 			  </div>
 			</div>
 		</div>
 	</div>
+<!-- Javascript link -->
+<script type="text/javascript" src="javascript/game.js" ></script>
 </body>
 </html>
