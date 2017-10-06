@@ -24,9 +24,9 @@ function animalGiphy(){
     		var pictureImage = 	$('<img>');
     		//Variable to grab the static image
     		pictureImage.attr("data-state", "still"); 
-    		pictureImage.attr("src", results[i].images.fixed_height_still.url);
-    		pictureImage.attr("data-still", results[i].images.fixed_height_still.url);
-    		pictureImage.attr("data-animate", results[i].images.fixed_height.url);
+    		pictureImage.attr("src", results[i].images.fixed_width_still.url);
+    		pictureImage.attr("data-still", results[i].images.fixed_width_still.url);
+    		pictureImage.attr("data-animate", results[i].images.fixed_width.url);
     		//Adding rating at the end of the element
     		pictureImage.attr('class','animate');
     		pictureDiv.prepend(p);
