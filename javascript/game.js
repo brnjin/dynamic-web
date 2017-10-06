@@ -12,18 +12,29 @@ function animalGiphy(){
     })
     .done(function(response){
     	console.log(queryURL);
+    	//Variable to access the giphy data easier
     	var results = response.data;
        	//Loop to add pictures and ratings 
     	for (var i =0; i < results.length;i++){
-    		var pictureDiv = $('<div>');
+    		//Adds div tag on the document
+    		var pictureDiv = $('<div class="test">');
+    		//Getting the rating data and diplaying it on the document
     		var p = $('<p>').text("Rating: " + results[i].rating);
+    		//Adds img tag to dipaly image
     		var pictureImage = 	$('<img>');
-    		var pictureStill = pictureImage.attr("src", results[i].images.fixed_height_still.url);
-    		pictureDiv.append(p);
-    		pictureDiv.prepend(pictureStill);
+    		//Variable to grab the static image
+    		pictureImage.attr("data-state", "still"); 
+    		pictureImage.attr("src", results[i].images.fixed_height_still.url);
+    		pictureImage.attr("data-still", results[i].images.fixed_height_still.url);
+    		pictureImage.attr("data-animate", results[i].images.fixed_height.url);
+    		//Adding rating at the end of the element
+    		pictureImage.attr('class','animate');
+    		pictureDiv.prepend(p);
+    		//Adding picture of the element
+    		pictureDiv.append(pictureImage);
+    		//Display rating and static picture on the document
     		$('#pictures-here').prepend(pictureDiv);	
     	}
-
     }); 
 }
 
@@ -54,17 +65,18 @@ $('#generate').on("click", function(event){
 	animals.push(animal);
 	buttonCreator();
 });
+
+$(document).on("click", '.animate', function(){
+	var state = $(this).attr("data-state");
+	if (state === "still") {
+	    $(this).attr("src", $(this).attr("data-animate"));
+	    $(this).attr("data-state", "animate");
+	} else {
+	    $(this).attr("src", $(this).attr("data-still"));
+	    $(this).attr("data-state", "still");
+	}
+	console.log(1234)
+})
 //Load buttons that were generated once the page loads
 $(document).on('click','.animal-buttons', animalGiphy);
 buttonCreator();
-
-/*
-    	var ratings = response.rating;
-    	var giphyDiv = $('<div class = "animal-buttons">');
-    	console.log(ratings);
-    	var p = $('<p>').text("Rating: " + ratings);
-    	giphyDiv.append(p);
-/*    	var imgURL = response.images.original_still.url;
-    	var image = $('<img>').attr("src", imgURL);
-    	giphyDiv.prepend(image);*/
-    /*	$("#pictures-here").prepend(giphyDiv);*/
